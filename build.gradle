@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.stefataa'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'codes.derive:foldem:1.1.4'
+    testImplementation 'junit:junit:4.12'
+}
+
+sourceCompatibility = '12'
