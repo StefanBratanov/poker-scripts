@@ -1,3 +1,5 @@
+package org.stefataa.pokerstuff;
+
 import java.util.Scanner;
 
 public class PokerBluffs {
