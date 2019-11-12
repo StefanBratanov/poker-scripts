@@ -1,3 +1,3 @@
 import poker
 
-print("Stefan")
+print(poker.OFFSUIT_HANDS)
