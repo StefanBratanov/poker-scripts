@@ -45,15 +45,16 @@ def validate_and_get(tk_var):
 
 # display plots
 def display_charts():
-    # clear frame
-    for widget in plots_frame.winfo_children():
-        widget.destroy()
     pot = validate_and_get(pot_size)
     if pot is None:
         return
     bet = validate_and_get(bet_size)
     if bet is None:
         return
+
+    # clear frame
+    for widget in plots_frame.winfo_children():
+        widget.destroy()
     # plotting bluff efficiency needed for pot
     x = np.linspace(1, max(4 * pot, bet), 20)
     y = np.array([calculate_bluff_efficiency_needed(pot, b) for b in x])
