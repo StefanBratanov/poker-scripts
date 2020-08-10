@@ -12,6 +12,7 @@ from dateutil import parser
 edt_timezone = pytz.timezone('US/Eastern')
 directory = sys.argv[1]
 hand_history_filename = sys.argv[2]
+all_hands = sys.argv[3].lower() == 'true'
 
 original_hand_history_file = os.path.join(directory, hand_history_filename)
 
@@ -75,6 +76,13 @@ for whole_hand in hands:
 
 to_write_file = open(new_hand_history_file, "w")
 
+if all_hands:
+    for poker_hand in poker_hands:
+        to_write_file.write(poker_hand.whole_hand)
+        to_write_file.write('\n')
+    to_write_file.close()
+    sys.exit()
+
 with open(os.path.join(directory, 'hands_i_need_to_extract.csv'), 'r') as hands_need_extracting:
     csv_reader = reader(hands_need_extracting)
     for row in csv_reader:
@@ -84,5 +92,6 @@ with open(os.path.join(directory, 'hands_i_need_to_extract.csv'), 'r') as hands_
         found_hands = sorted(found_hands, key=lambda x: difference_in_minutes(time_needed, x.time))
         if len(found_hands) > 0:
             to_write_file.write(found_hands[0].whole_hand)
+            to_write_file.write('\n')
 
 to_write_file.close()
