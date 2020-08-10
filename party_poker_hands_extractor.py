@@ -10,9 +10,8 @@ import pytz
 from dateutil import parser
 
 edt_timezone = pytz.timezone('US/Eastern')
-directory = "C:\\Users\\StefanPC\\Desktop\\Poker\\PartyPokerHandsReview"
-
-hand_history_filename = sys.argv[1]
+directory = sys.argv[1]
+hand_history_filename = sys.argv[2]
 
 original_hand_history_file = os.path.join(directory, hand_history_filename)
 
