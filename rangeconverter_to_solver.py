@@ -11,7 +11,10 @@ for hand in hands:
     hand_and_frequency = hand.split(":")
     hand = hand_and_frequency[0]
     frequency_percentage = round(float(hand_and_frequency[1]) * 100)
-    solver_friendly_range += "[" + str(frequency_percentage) + "]" + hand + "[/" + str(frequency_percentage) + "],"
+    if frequency_percentage == 100:
+        solver_friendly_range += hand + ","
+    else:
+        solver_friendly_range += "[" + str(frequency_percentage) + "]" + hand + "[/" + str(frequency_percentage) + "],"
 
 solver_friendly_range = solver_friendly_range[:-1]
 
